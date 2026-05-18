@@ -1,0 +1,85 @@
+---
+import { BookOpen, Download, Library, Moon, SlidersHorizontal } from "lucide-react";
+import GitHubMark from "./GitHubMark.astro";
+
+const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
+---
+
+<section
+  id="top"
+  class="mx-auto grid min-h-[710px] w-[min(100%-40px,1180px)] grid-cols-1 items-center gap-6 py-14 lg:grid-cols-[0.8fr_1fr] lg:py-20"
+  aria-labelledby="hero-title"
+>
+  <div>
+    <h1
+      id="hero-title"
+      class="font-display text-[clamp(3.15rem,7.4vw,5.55rem)] font-black leading-[0.94] tracking-[-0.045em]"
+    >
+      Sua biblioteca.
+      <span class="block text-gold-strong">Do seu jeito.</span>
+    </h1>
+    <p class="mt-7 max-w-[470px] text-[20px] leading-8 text-muted">
+      Leitor EPUB desktop moderno, local e offline para organizar, personalizar e aproveitar sua
+      leitura ao maximo.
+    </p>
+    <p class="mt-4 text-[18px] text-muted">Disponivel para Windows.</p>
+    <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+      <a
+        href={githubUrl}
+        class="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg bg-gold px-6 font-semibold text-white hover:bg-gold-strong"
+      >
+        <Download size={22} />
+        <span>Download</span>
+      </a>
+      <a
+        href={githubUrl}
+        class="bg-surface/70 inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg border border-line px-6 font-semibold transition hover:-translate-y-0.5 hover:border-gold"
+      >
+        <GitHubMark size={22} />
+        Ver no GitHub
+      </a>
+    </div>
+    <div id="recursos" class="mt-14 grid max-w-[500px] grid-cols-2 gap-6 sm:grid-cols-4">
+      {
+        [
+          {
+            icon: BookOpen,
+            title: "Leia",
+            text: "seus epubs",
+          },
+          {
+            icon: SlidersHorizontal,
+            title: "Personalize",
+            text: "sua leitura",
+          },
+          {
+            icon: Library,
+            title: "Organize",
+            text: "sua biblioteca",
+          },
+          {
+            icon: Moon,
+            title: "Use",
+            text: "temas de leitura",
+          },
+        ].map(({ icon: Icon, title, text }) => (
+          <div key={title} class="text-center text-sm leading-snug">
+            <Icon className="mx-auto mb-3 text-gold-strong" size={42} strokeWidth={1.7} />
+            <span class="block font-medium">{title}</span>
+            <span class="text-muted">{text}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="overflow-hidden rounded-[13px] border border-line bg-surface shadow-product">
+    <img
+      src="/images/library.png"
+      alt="Tela de biblioteca do Leitor EPUB"
+      class="block aspect-[1919/1017] w-full object-cover object-left-top"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+</section>

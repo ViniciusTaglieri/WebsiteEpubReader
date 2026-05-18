@@ -1,0 +1,42 @@
+---
+import { Download } from "lucide-react";
+import BrandMark from "./BrandMark.astro";
+import GitHubMark from "./GitHubMark.astro";
+
+const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
+---
+
+<header class="bg-canvas/90 sticky top-0 z-40 border-b border-line backdrop-blur-xl">
+  <nav
+    class="mx-auto flex min-h-[76px] w-[min(100%-32px,1180px)] items-center justify-between gap-7"
+    aria-label="Navegacao principal"
+  >
+    <a
+      href="#top"
+      class="inline-flex items-center gap-3 text-[21px] font-semibold tracking-[-0.02em]"
+    >
+      <BrandMark />
+      <span>Leitor EPUB</span>
+    </a>
+    <div class="hidden items-center gap-9 text-sm font-medium md:flex">
+      <a href="#recursos" class="transition hover:text-gold-strong">Recursos</a>
+      <a href="#demo" class="transition hover:text-gold-strong">Demo</a>
+      <a href="#capturas" class="transition hover:text-gold-strong">Capturas</a>
+      <a href={githubUrl} class="transition hover:text-gold-strong">GitHub</a>
+      <a
+        href={githubUrl}
+        class="inline-flex min-h-11 items-center gap-2 rounded-lg bg-gold px-5 font-semibold text-white hover:bg-gold-strong"
+      >
+        <Download size={18} />
+        Download
+      </a>
+    </div>
+    <a
+      href={githubUrl}
+      class="inline-flex min-h-10 items-center gap-2 rounded-lg border border-line bg-surface px-3 text-sm font-bold md:hidden"
+      aria-label="Abrir GitHub"
+    >
+      <GitHubMark size={18} />
+    </a>
+  </nav>
+</header>
