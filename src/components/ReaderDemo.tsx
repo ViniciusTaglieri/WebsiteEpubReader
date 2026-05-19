@@ -1,7 +1,7 @@
-import * as Select from "@radix-ui/react-select";
-import * as Slider from "@radix-ui/react-slider";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { motion } from "framer-motion";
+import * as Select from '@radix-ui/react-select'
+import * as Slider from '@radix-ui/react-slider'
+import * as ToggleGroup from '@radix-ui/react-toggle-group'
+import { motion } from 'framer-motion'
 import {
   AlignJustify,
   AlignLeft,
@@ -12,9 +12,9 @@ import {
   ScrollText,
   Square,
   Type,
-} from "lucide-react";
-import type { CSSProperties } from "react";
-import { useMemo, useState } from "react";
+} from 'lucide-react'
+import type { CSSProperties } from 'react'
+import { useMemo, useState } from 'react'
 import {
   defaultReaderSettings,
   getReaderPreviewState,
@@ -23,9 +23,38 @@ import {
   type ReaderSettings,
   type ReaderSpread,
   type ReaderTheme,
-} from "../lib/readerPreview";
+} from '../lib/readerPreview'
 
-const fonts = ["Georgia", "Charter", "Inter", "Atkinson Hyperlegible"];
+const fonts = [
+  { label: 'Georgia', value: 'Georgia, "Times New Roman", serif' },
+  { label: 'Inter', value: 'Inter, "Segoe UI", Arial, sans-serif' },
+  { label: 'Verdana', value: 'Verdana, Geneva, sans-serif' },
+  { label: 'Mono', value: '"Courier New", Courier, monospace' },
+]
+
+const readerText = [
+  {
+    title: 'Capitulo 1.',
+  },
+  {
+    body: 'Examinar com atencao as linhas de um texto tambem e uma forma de caminhar. Cada ajuste de fonte, margem e ritmo muda a distancia entre o leitor e a pagina, como se o livro se abrisse de novo em outra luz.',
+  },
+  {
+    body: 'Um bom app de leitura precisa desaparecer no momento certo: guardar a posicao, respeitar o tamanho escolhido, reduzir atrito e permitir que a pagina fique confortavel por minutos ou por horas.',
+  },
+  {
+    body: 'Leitores experientes costumam alternar entre margens largas para estudo e margens estreitas para avancar mais rapido. A tipografia faz parte desse pacto silencioso entre concentracao, descanso visual e memoria.',
+  },
+  {
+    body: 'Uma curiosidade: muitos leitores preferem linhas com algo entre 55 e 75 caracteres porque o olho encontra a proxima linha com menos esforco. Por isso a largura da coluna importa tanto quanto o tamanho da fonte.',
+  },
+  {
+    body: 'Quando o modo de duas paginas esta ativo, o conteudo nao deve virar outro trecho. Ele deve continuar sendo o mesmo texto, apenas distribuido em duas colunas, aproximando a experiencia de um livro aberto.',
+  },
+  {
+    body: 'A previa abaixo e curta de proposito, mas precisa se comportar como um leitor real: se o texto ficar grande demais para a pagina, ele e cortado pela area visivel em vez de empurrar a barra inferior para fora.',
+  },
+]
 
 function Panel({
   title,
@@ -33,10 +62,10 @@ function Panel({
   onReset,
   children,
 }: {
-  title: string;
-  icon: React.ReactNode;
-  onReset?: () => void;
-  children: React.ReactNode;
+  title: string
+  icon: React.ReactNode
+  onReset?: () => void
+  children: React.ReactNode
 }) {
   return (
     <div className="bg-surface/90 rounded-[10px] border border-line p-4 shadow-[0_16px_38px_rgb(60_38_9_/_8%)]">
@@ -60,7 +89,7 @@ function Panel({
       </h3>
       <div className="space-y-4">{children}</div>
     </div>
-  );
+  )
 }
 
 function RangeField({
@@ -72,13 +101,13 @@ function RangeField({
   suffix,
   onChange,
 }: {
-  label: string;
-  value: number;
-  min: number;
-  max: number;
-  step?: number;
-  suffix: string;
-  onChange: (value: number) => void;
+  label: string
+  value: number
+  min: number
+  max: number
+  step?: number
+  suffix: string
+  onChange: (value: number) => void
 }) {
   return (
     <label className="block">
@@ -107,7 +136,7 @@ function RangeField({
         />
       </Slider.Root>
     </label>
-  );
+  )
 }
 
 function ToggleField<T extends string>({
@@ -116,15 +145,15 @@ function ToggleField<T extends string>({
   options,
   onChange,
 }: {
-  label: string;
-  value: T;
+  label: string
+  value: T
   options: Array<{
-    value: T;
-    label: string;
-    icon?: React.ReactNode;
-    disabled?: boolean;
-  }>;
-  onChange: (value: T) => void;
+    value: T
+    label: string
+    icon?: React.ReactNode
+    disabled?: boolean
+  }>
+  onChange: (value: T) => void
 }) {
   return (
     <div>
@@ -151,47 +180,47 @@ function ToggleField<T extends string>({
         ))}
       </ToggleGroup.Root>
     </div>
-  );
+  )
 }
 
 function ThemeField({
   value,
   onChange,
 }: {
-  value: ReaderTheme;
-  onChange: (value: ReaderTheme) => void;
+  value: ReaderTheme
+  onChange: (value: ReaderTheme) => void
 }) {
   const themes: Array<{
-    value: ReaderTheme;
-    label: string;
-    dotClassName: string;
-    centerClassName: string;
+    value: ReaderTheme
+    label: string
+    dotClassName: string
+    centerClassName: string
   }> = [
     {
-      value: "light",
-      label: "Claro",
-      dotClassName: "border-slate-400 bg-slate-700",
-      centerClassName: "bg-surface",
+      value: 'light',
+      label: 'Claro',
+      dotClassName: 'border-slate-400 bg-slate-700',
+      centerClassName: 'bg-surface',
     },
     {
-      value: "dark",
-      label: "Escuro",
-      dotClassName: "border-neutral-300 bg-neutral-100",
-      centerClassName: "bg-zinc-900",
+      value: 'dark',
+      label: 'Escuro',
+      dotClassName: 'border-neutral-300 bg-neutral-100',
+      centerClassName: 'bg-zinc-900',
     },
     {
-      value: "sepia",
-      label: "Sepia",
-      dotClassName: "border-stone-300 bg-stone-600",
-      centerClassName: "bg-surface",
+      value: 'sepia',
+      label: 'Sepia',
+      dotClassName: 'border-stone-300 bg-stone-600',
+      centerClassName: 'bg-surface',
     },
     {
-      value: "oled",
-      label: "OLED",
-      dotClassName: "border-neutral-300 bg-neutral-50",
-      centerClassName: "bg-zinc-900",
+      value: 'oled',
+      label: 'OLED',
+      dotClassName: 'border-neutral-300 bg-neutral-50',
+      centerClassName: 'bg-zinc-900',
     },
-  ];
+  ]
 
   return (
     <div>
@@ -220,23 +249,23 @@ function ThemeField({
         ))}
       </ToggleGroup.Root>
     </div>
-  );
+  )
 }
 
 export function ReaderDemo() {
   const [settings, setSettings] = useState<ReaderSettings>(
     defaultReaderSettings,
-  );
-  const preview = useMemo(() => getReaderPreviewState(settings), [settings]);
-  const normalized = preview.normalizedSettings;
+  )
+  const preview = useMemo(() => getReaderPreviewState(settings), [settings])
+  const normalized = preview.normalizedSettings
 
   function patch(next: Partial<ReaderSettings>) {
     setSettings((current) => ({
       ...current,
       ...next,
       spread:
-        next.flow === "continuous" ? "single" : (next.spread ?? current.spread),
-    }));
+        next.flow === 'continuous' ? 'single' : (next.spread ?? current.spread),
+    }))
   }
 
   return (
@@ -251,7 +280,7 @@ export function ReaderDemo() {
           alinhamento e modo de leitura respondem na hora.
         </p>
       </div>
-      <div className="mx-auto grid w-[min(100%-32px,1240px)] grid-cols-1 items-start gap-7 lg:grid-cols-[320px_minmax(0,1fr)] xl:grid-cols-[450px_minmax(0,1fr)]">
+      <div className="mx-auto grid w-[min(100%-32px,1240px)] grid-cols-1 items-start gap-7 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-stretch xl:grid-cols-[450px_minmax(0,1fr)]">
         <Panel
           title="Aparencia, layout e navegacao"
           icon={<Type size={17} />}
@@ -274,11 +303,11 @@ export function ReaderDemo() {
                   <Select.Viewport>
                     {fonts.map((font) => (
                       <Select.Item
-                        key={font}
-                        value={font}
+                        key={font.value}
+                        value={font.value}
                         className="cursor-pointer px-3 py-2 text-sm outline-none hover:bg-gold-soft data-[highlighted]:bg-gold-soft"
                       >
-                        <Select.ItemText>{font}</Select.ItemText>
+                        <Select.ItemText>{font.label}</Select.ItemText>
                       </Select.Item>
                     ))}
                   </Select.Viewport>
@@ -331,13 +360,13 @@ export function ReaderDemo() {
               onChange={(textAlign) => patch({ textAlign })}
               options={[
                 {
-                  value: "left",
-                  label: "Esquerda",
+                  value: 'left',
+                  label: 'Esquerda',
                   icon: <AlignLeft size={14} />,
                 },
                 {
-                  value: "justify",
-                  label: "Justificado",
+                  value: 'justify',
+                  label: 'Justificado',
                   icon: <AlignJustify size={14} />,
                 },
               ]}
@@ -349,13 +378,13 @@ export function ReaderDemo() {
             onChange={(flow) => patch({ flow })}
             options={[
               {
-                value: "paginated",
-                label: "Paginado",
+                value: 'paginated',
+                label: 'Paginado',
                 icon: <BookOpen size={14} />,
               },
               {
-                value: "continuous",
-                label: "Continuo",
+                value: 'continuous',
+                label: 'Continuo',
                 icon: <ScrollText size={14} />,
               },
             ]}
@@ -365,19 +394,19 @@ export function ReaderDemo() {
             value={normalized.spread}
             onChange={(spread) => patch({ spread })}
             options={[
-              { value: "single", label: "Uma", icon: <Square size={14} /> },
+              { value: 'single', label: 'Uma', icon: <Square size={14} /> },
               {
-                value: "double",
-                label: "Duas",
+                value: 'double',
+                label: 'Duas',
                 icon: <Columns2 size={14} />,
-                disabled: normalized.flow === "continuous",
+                disabled: normalized.flow === 'continuous',
               },
             ]}
           />
         </Panel>
 
         <motion.article
-          className="flex h-full min-h-[680px] flex-col overflow-hidden rounded-xl border border-line shadow-[0_34px_90px_color-mix(in_oklch,var(--accent)_18%,transparent),0_26px_70px_rgb(55_38_18_/_14%)]"
+          className="flex h-full min-h-0 flex-col overflow-hidden rounded-xl border border-line shadow-[0_34px_90px_color-mix(in_oklch,var(--accent)_18%,transparent),0_26px_70px_rgb(55_38_18_/_14%)]"
           animate={{
             backgroundColor: String(preview.readerStyle.backgroundColor),
           }}
@@ -388,7 +417,7 @@ export function ReaderDemo() {
             style={
               {
                 ...preview.readerStyle,
-                "--reader-family": preview.readerStyle.fontFamily,
+                '--reader-family': preview.readerStyle.fontFamily,
               } as CSSProperties
             }
           >
@@ -396,64 +425,52 @@ export function ReaderDemo() {
               className="reader-pages"
               data-flow={normalized.flow}
               data-spread={normalized.spread}
-              style={{ paddingInline: "var(--reader-margin)" }}
+              style={{ padding: 'var(--reader-margin)' }}
             >
-              <div>
-                <p>
-                  <strong>79 A PRADARIA.</strong> Examinar com atencao as linhas
-                  do rosto, ou mexer nas protuberancias da cabeca desse Leviata;
-                  essas sao ocupacoes que nenhum Fisionomista ou Frenologista
-                  tomou para si ate agora.
-                </p>
-                <p>
-                  Tal iniciativa pareceria tao propicia quanto para Lavater a de
-                  analisar as dobraduras do Rochedo de Gibraltar, ou para Gall a
-                  de subir numa escada e tocar a Cupula do Panteao.
-                </p>
-                <p>
-                  No entanto, em sua obra famosa, Lavater nao apenas discorre
-                  sobre os varios rostos dos homens, como tambem estuda com
-                  cuidado os rostos dos cavalos, passaros, serpentes e peixes.
-                </p>
-              </div>
-              <div
-                className={normalized.spread === "double" ? "block" : "hidden"}
-              >
-                <p>
-                  Por isso, apesar de ser pouco qualificado para um pioneiro, na
-                  aplicacao dessas duas semiciencias a baleia farei minha
-                  tentativa. Experimento de tudo; e termino o que posso.
-                </p>
-                <p>
-                  Do ponto de vista fisiognomonico, o Cachalote e uma criatura
-                  anomala. Ele nao possui um nariz de verdade. E uma vez que o
-                  nariz e o mais importante e conspicuo dos predicados.
-                </p>
+              <div className="reader-copy">
+                {readerText.map((paragraph) => (
+                  <p key={paragraph.title ?? paragraph.body}>
+                    {paragraph.title ? (
+                      <strong>{paragraph.title}</strong>
+                    ) : null}
+                    {paragraph.title ? ' ' : null}
+                    {paragraph.body}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
           {/* FOOTER LEITOR */}
-          <div className="bg-surface/90 border-t border-line px-6 py-6 text-xs text-ink">
+          <div
+            className="reader-footer border-t border-line px-6 py-6 text-xs"
+            style={
+              {
+                backgroundColor: String(preview.readerStyle.backgroundColor),
+                color: String(preview.readerStyle.color),
+                fontFamily: preview.readerStyle.fontFamily,
+              } as CSSProperties
+            }
+          >
             <div className="mb-2 grid grid-cols-3 gap-3">
               <span className="flex items-center gap-1.5">
                 <BookOpen size={14} />
-                <span className="font-medium">Capitulo:</span> 83 / 150
+                <span className="font-medium">Capitulo:</span> 1 / 10
               </span>
               <span className="text-center">
-                <span className="font-medium">Página:</span> 514 / 925
+                <span className="font-medium">Página:</span> 10 / 50
               </span>
               <span className="text-right">
-                <span className="font-medium">Progresso:</span> 56% do livro
+                <span className="font-medium">Progresso:</span> 20% do livro
               </span>
             </div>
             <div className="bg-ink/80 relative mt-6 h-[6px] rounded-full">
               <div className="relative h-full w-full rounded-full bg-zinc-400/25" />
-              <div className="absolute top-0 h-full w-[56%] rounded-full bg-gold" />
-              <div className="absolute left-[56%] top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-surface bg-gold shadow" />
+              <div className="absolute top-0 h-full w-[20%] rounded-full bg-gold" />
+              <div className="absolute left-[20%] top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-surface bg-gold shadow" />
             </div>
           </div>
         </motion.article>
       </div>
     </section>
-  );
+  )
 }
