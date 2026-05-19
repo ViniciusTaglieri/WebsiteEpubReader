@@ -1,10 +1,10 @@
 ---
+import Colecoes from "../components/Colecoes.astro";
 import FeatureStrip from "../components/FeatureStrip.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import { ReaderDemo } from "../components/ReaderDemo";
-import Screenshots from "../components/Screenshots.astro";
 import "../styles.css";
 ---
 
@@ -22,7 +22,7 @@ import "../styles.css";
       property="og:description"
       content="Website visual do projeto open source EpubReader, com demo interativa das configuracoes do leitor."
     />
-    <meta property="og:image" content="/images/landing-reference.png" />
+    <meta property="og:image" content="/images/landing-reference.webp" />
     <title>Leitor EPUB - Biblioteca local e leitura personalizada</title>
   </head>
   <body>
@@ -31,7 +31,7 @@ import "../styles.css";
       <Hero />
       <ReaderDemo client:load />
       <FeatureStrip />
-      <Screenshots />
+      <Colecoes />
     </main>
     <Footer />
   </body>

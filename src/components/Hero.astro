@@ -1,5 +1,11 @@
 ---
-import { BookOpen, Download, Library, Moon, SlidersHorizontal } from "lucide-react";
+import {
+  BookOpen,
+  Download,
+  Library,
+  Moon,
+  SlidersHorizontal,
+} from "lucide-react";
 import GitHubMark from "./GitHubMark.astro";
 
 const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
@@ -7,7 +13,7 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
 
 <section
   id="top"
-  class="mx-auto grid min-h-[710px] w-[min(100%-40px,1180px)] grid-cols-1 items-center gap-6 py-14 lg:grid-cols-[0.8fr_1fr] lg:py-20"
+  class="mx-auto grid min-h-[710px] w-[min(100%-40px,1180px)] grid-cols-1 items-center gap-6 py-14 lg:grid-cols-[1.2fr_1fr] lg:py-20"
   aria-labelledby="hero-title"
 >
   <div>
@@ -19,8 +25,8 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
       <span class="block text-gold-strong">Do seu jeito.</span>
     </h1>
     <p class="mt-7 max-w-[470px] text-[20px] leading-8 text-muted">
-      Leitor EPUB desktop moderno, local e offline para organizar, personalizar e aproveitar sua
-      leitura ao maximo.
+      Leitor EPUB desktop moderno, local e offline para organizar, personalizar
+      e aproveitar sua leitura ao maximo.
     </p>
     <p class="mt-4 text-[18px] text-muted">Disponivel para Windows.</p>
     <div class="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -33,13 +39,16 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
       </a>
       <a
         href={githubUrl}
-        class="bg-surface/70 inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg border border-line px-6 font-semibold transition hover:-translate-y-0.5 hover:border-gold"
+        class="bg-surface/70 inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg border border-line px-6 font-semibold transition hover:border-gold"
       >
-        <GitHubMark size={22} />
+        <GitHubMark size={30} />
         Ver no GitHub
       </a>
     </div>
-    <div id="recursos" class="mt-14 grid max-w-[500px] grid-cols-2 gap-6 sm:grid-cols-4">
+    <div
+      id="recursos"
+      class="mt-14 grid max-w-[500px] grid-cols-2 gap-6 sm:grid-cols-4"
+    >
       {
         [
           {
@@ -54,8 +63,8 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
           },
           {
             icon: Library,
-            title: "Organize",
-            text: "sua biblioteca",
+            title: "Colecione",
+            text: "seus livros",
           },
           {
             icon: Moon,
@@ -63,8 +72,12 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
             text: "temas de leitura",
           },
         ].map(({ icon: Icon, title, text }) => (
-          <div key={title} class="text-center text-sm leading-snug">
-            <Icon className="mx-auto mb-3 text-gold-strong" size={42} strokeWidth={1.7} />
+          <div class="text-center text-sm leading-snug">
+            <Icon
+              className="mx-auto mb-3 text-gold-strong"
+              size={42}
+              strokeWidth={1.7}
+            />
             <span class="block font-medium">{title}</span>
             <span class="text-muted">{text}</span>
           </div>
@@ -73,13 +86,18 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
     </div>
   </div>
 
-  <div class="overflow-hidden rounded-[13px] border border-line bg-surface shadow-product">
+  <div class="relative">
     <img
-      src="/images/library.png"
+      src="/images/hero.png"
       alt="Tela de biblioteca do Leitor EPUB"
-      class="block aspect-[1919/1017] w-full object-cover object-left-top"
+      class="block w-full object-cover object-left-top"
       loading="eager"
       decoding="async"
     />
+    <!-- sombra -->
+    <div
+      class="absolute left-1/2 top-full mt-6 h-3 w-2/4 -translate-x-1/2 rounded-full bg-gold-strong blur-xl"
+    >
+    </div>
   </div>
 </section>
