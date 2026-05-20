@@ -1,7 +1,8 @@
 {
   "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
-  "singleQuote": false,
-  "semi": true,
+  "singleQuote": true,
+  "semi": false,
+  "printWidth": 80,
   "trailingComma": "all",
   "overrides": [
     {
