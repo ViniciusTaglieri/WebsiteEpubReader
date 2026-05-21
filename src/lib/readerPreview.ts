@@ -58,15 +58,9 @@ export function normalizeReaderSettings(
 export function getReaderPreviewState(settings: ReaderSettings) {
   const normalizedSettings = normalizeReaderSettings(settings)
   const theme = themes[normalizedSettings.theme]
-  const flowLabel =
-    normalizedSettings.flow === 'continuous' ? 'Rolagem continua' : 'Paginado'
-  const spreadLabel =
-    normalizedSettings.spread === 'double' ? 'duas paginas' : 'uma pagina'
 
   return {
     normalizedSettings,
-    themeLabel: theme.label,
-    layoutLabel: `${flowLabel}, ${spreadLabel}`,
     readerStyle: {
       '--reader-font-size': `${normalizedSettings.fontSize}px`,
       '--reader-margin': `${normalizedSettings.margin}px`,

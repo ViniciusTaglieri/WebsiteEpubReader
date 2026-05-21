@@ -16,7 +16,7 @@ const features = [
   {
     icon: SlidersHorizontal,
     title: "Leitura personalizada",
-    text: "Fontes, temas, margens e espacamentos para seu conforto.",
+    text: "Fontes, temas, margens e espaçamentos para seu conforto.",
   },
   {
     icon: ChartNoAxesColumnIncreasing,
@@ -26,11 +26,11 @@ const features = [
   {
     icon: ShieldCheck,
     title: "Leve e seguro",
-    text: "Leitura offline, sem depender de conta ou servico externo.",
+    text: "Leitura offline, sem depender de conta ou serviço externo.",
   },
   {
     icon: Code2,
-    title: "Codigo aberto",
+    title: "Código aberto",
     text: "Transparente, colaborativo e pronto para evoluir.",
   },
 ];
@@ -41,7 +41,7 @@ const features = [
 >
   {
     features.map(({ icon: Icon, title, text }) => (
-      <div class="grid min-h-[105px] grid-cols-[34px_1fr] gap-4 border-b border-line px-3 py-5 last:border-b-0 md:even:border-l lg:border-b-0 lg:border-r lg:last:border-r-0">
+      <div class="grid min-h-[105px] grid-cols-[34px_1fr] gap-4 border-b border-line px-3 py-5 last:border-b-0 md:even:border-l md:last:col-span-2 md:last:border-l-0 lg:col-span-1 lg:border-b-0 lg:border-r lg:last:border-r-0">
         <Icon className="text-gold-strong" size={30} strokeWidth={1.7} />
         <div>
           <strong class="block text-sm">{title}</strong>

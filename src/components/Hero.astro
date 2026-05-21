@@ -9,11 +9,12 @@ import {
 import GitHubMark from "./GitHubMark.astro";
 
 const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <section
   id="top"
-  class="mx-auto grid min-h-[710px] w-[min(100%-40px,1180px)] grid-cols-1 items-center gap-6 py-14 lg:grid-cols-[1.2fr_1fr] lg:py-20"
+  class="mx-auto grid w-[min(100%-40px,1180px)] grid-cols-1 items-center gap-6 py-12 lg:min-h-[710px] lg:grid-cols-[1.2fr_1fr] lg:py-20"
   aria-labelledby="hero-title"
 >
   <div>
@@ -26,12 +27,14 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
     </h1>
     <p class="mt-7 max-w-[470px] text-[20px] leading-8 text-muted">
       Leitor EPUB desktop moderno, local e offline para organizar, personalizar
-      e aproveitar sua leitura ao maximo.
+      e aproveitar sua leitura ao máximo.
     </p>
-    <p class="mt-4 text-[18px] text-muted">Disponivel para Windows.</p>
+    <p class="mt-4 text-[18px] text-muted">Disponível para Windows.</p>
     <div class="mt-8 flex flex-col gap-4 sm:flex-row">
       <a
-        href={githubUrl}
+        href={githubUrl + "/releases"}
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg bg-gold px-6 font-semibold text-white hover:bg-gold-strong"
       >
         <Download size={22} />
@@ -39,6 +42,8 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
       </a>
       <a
         href={githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         class="bg-surface/70 inline-flex min-h-[56px] items-center justify-center gap-3 rounded-lg border border-line px-6 font-semibold transition hover:border-gold"
       >
         <GitHubMark size={30} />
@@ -88,7 +93,7 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
 
   <div class="relative">
     <img
-      src="/images/hero.png"
+      src={`${base}images/hero.png`}
       alt="Tela de biblioteca do Leitor EPUB"
       class="block w-full object-cover object-left-top"
       loading="eager"

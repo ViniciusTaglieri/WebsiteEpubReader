@@ -34,25 +34,25 @@ const fonts = [
 
 const readerText = [
   {
-    title: 'Capitulo 1.',
+    title: 'Capítulo 1.',
   },
   {
-    body: 'Examinar com atencao as linhas de um texto tambem e uma forma de caminhar. Cada ajuste de fonte, margem e ritmo muda a distancia entre o leitor e a pagina, como se o livro se abrisse de novo em outra luz.',
+    body: 'Examinar com atenção as linhas de um texto também é uma forma de caminhar. Cada ajuste de fonte, margem e ritmo muda a distância entre o leitor e a página, como se o livro se abrisse de novo em outra luz.',
   },
   {
-    body: 'Um bom app de leitura precisa desaparecer no momento certo: guardar a posicao, respeitar o tamanho escolhido, reduzir atrito e permitir que a pagina fique confortavel por minutos ou por horas.',
+    body: 'Um bom app de leitura precisa desaparecer no momento certo: guardar a posição, respeitar o tamanho escolhido, reduzir atrito e permitir que a página fique confortável por minutos ou por horas.',
   },
   {
-    body: 'Leitores experientes costumam alternar entre margens largas para estudo e margens estreitas para avancar mais rapido. A tipografia faz parte desse pacto silencioso entre concentracao, descanso visual e memoria.',
+    body: 'Leitores experientes costumam alternar entre margens largas para estudo e margens estreitas para avançar mais rápido. A tipografia faz parte desse pacto silencioso entre concentração, descanso visual e memória.',
   },
   {
-    body: 'Uma curiosidade: muitos leitores preferem linhas com algo entre 55 e 75 caracteres porque o olho encontra a proxima linha com menos esforco. Por isso a largura da coluna importa tanto quanto o tamanho da fonte.',
+    body: 'Uma curiosidade: muitos leitores preferem linhas com algo entre 55 e 75 caracteres porque o olho encontra a próxima linha com menos esforço. Por isso a largura da coluna importa tanto quanto o tamanho da fonte.',
   },
   {
-    body: 'Quando o modo de duas paginas esta ativo, o conteudo nao deve virar outro trecho. Ele deve continuar sendo o mesmo texto, apenas distribuido em duas colunas, aproximando a experiencia de um livro aberto.',
+    body: 'Quando o modo de duas páginas está ativo, o conteúdo não deve virar outro trecho. Ele deve continuar sendo o mesmo texto, apenas distribuído em duas colunas, aproximando a experiência de um livro aberto.',
   },
   {
-    body: 'A previa abaixo e curta de proposito, mas precisa se comportar como um leitor real: se o texto ficar grande demais para a pagina, ele e cortado pela area visivel em vez de empurrar a barra inferior para fora.',
+    body: 'A prévia abaixo é curta de propósito, mas precisa se comportar como um leitor real: se o texto ficar grande demais para a página, ele é cortado pela área visível em vez de empurrar a barra inferior para fora.',
   },
 ]
 
@@ -81,7 +81,7 @@ function Panel({
             type="button"
             onClick={onReset}
             className="flex h-9 items-center justify-center gap-2 rounded-md border border-line bg-surface px-3 text-xs font-semibold text-ink transition hover:bg-gold-soft hover:text-gold-strong"
-            aria-label="Restaurar configuracoes padrao"
+            aria-label="Restaurar configurações padrão"
           >
             <RotateCcw size={14} />
           </button>
@@ -276,13 +276,13 @@ export function ReaderDemo() {
           Leitura personalizada
         </h2>
         <p className="mx-auto mt-3 max-w-[560px] text-[17px] leading-7 text-muted">
-          Ajuste a previa como no app: fonte, tamanho, margem, temas,
+          Ajuste a prévia como no app: fonte, tamanho, margem, temas,
           alinhamento e modo de leitura respondem na hora.
         </p>
       </div>
       <div className="mx-auto grid w-[min(100%-32px,1240px)] grid-cols-1 items-start gap-7 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-stretch xl:grid-cols-[450px_minmax(0,1fr)]">
         <Panel
-          title="Aparencia, layout e navegacao"
+          title="Aparência, layout e navegação"
           icon={<Type size={17} />}
           onReset={() => setSettings(defaultReaderSettings)}
         >
@@ -336,7 +336,7 @@ export function ReaderDemo() {
             onChange={(margin) => patch({ margin })}
           />
           <RangeField
-            label="Espacamento de linha"
+            label="Espaçamento de linha"
             value={settings.lineHeight}
             min={1.25}
             max={1.95}
@@ -345,7 +345,7 @@ export function ReaderDemo() {
             onChange={(lineHeight) => patch({ lineHeight })}
           />
           <RangeField
-            label="Espacamento de paragrafo"
+            label="Espaçamento de parágrafo"
             value={settings.paragraphSpacing}
             min={0.2}
             max={1.4}
@@ -384,7 +384,7 @@ export function ReaderDemo() {
               },
               {
                 value: 'continuous',
-                label: 'Continuo',
+                label: 'Contínuo',
                 icon: <ScrollText size={14} />,
               },
             ]}
@@ -454,7 +454,7 @@ export function ReaderDemo() {
             <div className="mb-2 grid grid-cols-3 gap-3">
               <span className="flex items-center gap-1.5">
                 <BookOpen size={14} />
-                <span className="font-medium">Capitulo:</span> 1 / 10
+                <span className="font-medium">Capítulo:</span> 1 / 10
               </span>
               <span className="text-center">
                 <span className="font-medium">Página:</span> 10 / 50

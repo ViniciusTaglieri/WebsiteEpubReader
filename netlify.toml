@@ -1,7 +1,0 @@
-[build]
-  command = "corepack pnpm install --frozen-lockfile && corepack pnpm build"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "24"
-  PNPM_VERSION = "10.21.0"

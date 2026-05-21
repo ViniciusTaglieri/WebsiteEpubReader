@@ -1,5 +1,5 @@
 ---
-import { BookMarked, Download } from 'lucide-react'
+import { BookMarked, Download, Menu, X } from 'lucide-react'
 import GitHubMark from './GitHubMark.astro'
 
 const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
@@ -10,7 +10,7 @@ const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
 >
   <nav
     class="mx-auto flex min-h-[76px] w-[min(100%-32px,1180px)] items-center justify-between gap-7"
-    aria-label="Navegacao principal"
+    aria-label="Navegação principal"
   >
     <a
       href="#top"
@@ -19,29 +19,152 @@ const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
       <BookMarked className="h-10 w-10 text-gold" />
       <span>Leitor EPUB</span>
     </a>
+
+    <!-- Desktop nav -->
     <div class="hidden items-center gap-9 text-sm font-medium md:flex">
-      <a href="#top" class="transition hover:text-gold-strong">Inicio</a>
+      <a href="#top" class="transition hover:text-gold-strong">Início</a>
       <a href="#demo" class="transition hover:text-gold-strong">Demo</a>
       <a href="#colecoes" class="transition hover:text-gold-strong">Coleções</a>
       <a
         href={githubUrl}
         target="_blank"
+        rel="noopener noreferrer"
         class="transition hover:text-gold-strong">GitHub</a
       >
       <a
-        href={githubUrl}
+        href={githubUrl + '/releases'}
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex min-h-11 items-center gap-2 rounded-lg bg-gold px-5 font-semibold text-white hover:bg-gold-strong"
       >
         <Download size={18} />
         Download
       </a>
     </div>
-    <a
-      href={githubUrl}
-      class="inline-flex min-h-10 items-center gap-2 rounded-lg border border-line bg-surface px-3 text-sm font-bold md:hidden"
-      aria-label="Abrir GitHub"
+
+    <!-- Mobile: botão hamburguer -->
+    <button
+      id="menu-open"
+      type="button"
+      class="grid h-10 w-10 place-items-center rounded-lg border border-line bg-surface text-ink transition hover:border-gold md:hidden"
+      aria-label="Abrir menu de navegação"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
     >
-      <GitHubMark size={18} />
-    </a>
+      <Menu size={20} />
+    </button>
   </nav>
 </header>
+
+<!-- Overlay escuro -->
+<div
+  id="menu-overlay"
+  class="pointer-events-none fixed inset-0 z-40 bg-ink/50 opacity-0 transition-opacity duration-300 md:hidden"
+  aria-hidden="true"
+></div>
+
+<!-- Painel deslizante -->
+<aside
+  id="mobile-menu"
+  class="fixed right-0 top-0 z-50 flex h-dvh w-[min(82vw,320px)] translate-x-full flex-col bg-canvas shadow-[-12px_0_40px_rgb(0_0_0/14%)] transition-transform duration-300 ease-out md:hidden"
+  aria-label="Menu de navegação"
+  aria-hidden="true"
+>
+  <!-- Cabeçalho do painel -->
+  <div class="flex items-center justify-between border-b border-line px-5 py-4">
+    <a
+      href="#top"
+      data-menu-link
+      class="inline-flex items-center gap-2.5 text-[17px] font-semibold tracking-[-0.02em]"
+    >
+      <BookMarked className="h-7 w-7 text-gold" />
+      <span>Leitor EPUB</span>
+    </a>
+    <button
+      id="menu-close"
+      type="button"
+      class="grid h-9 w-9 place-items-center rounded-lg border border-line text-ink transition hover:border-gold"
+      aria-label="Fechar menu"
+    >
+      <X size={18} />
+    </button>
+  </div>
+
+  <!-- Links -->
+  <nav class="flex flex-col gap-1 p-3">
+    <a
+      href="#top"
+      data-menu-link
+      class="flex min-h-[48px] items-center rounded-lg px-4 text-sm font-medium transition hover:bg-gold-soft hover:text-gold-strong"
+    >Início</a>
+    <a
+      href="#demo"
+      data-menu-link
+      class="flex min-h-[48px] items-center rounded-lg px-4 text-sm font-medium transition hover:bg-gold-soft hover:text-gold-strong"
+    >Demo</a>
+    <a
+      href="#colecoes"
+      data-menu-link
+      class="flex min-h-[48px] items-center rounded-lg px-4 text-sm font-medium transition hover:bg-gold-soft hover:text-gold-strong"
+    >Coleções</a>
+    <a
+      href={githubUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex min-h-[48px] items-center gap-2.5 rounded-lg px-4 text-sm font-medium transition hover:bg-gold-soft hover:text-gold-strong"
+    >
+      <GitHubMark size={16} />
+      GitHub
+    </a>
+  </nav>
+
+  <!-- Download fixo no rodapé do painel -->
+  <div class="mt-auto border-t border-line p-4">
+    <a
+      href={githubUrl + '/releases'}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex min-h-[52px] items-center justify-center gap-2.5 rounded-lg bg-gold font-semibold text-white transition hover:bg-gold-strong"
+    >
+      <Download size={18} />
+      Download
+    </a>
+  </div>
+</aside>
+
+<script>
+  const openBtn = document.getElementById('menu-open')
+  const closeBtn = document.getElementById('menu-close')
+  const overlay = document.getElementById('menu-overlay')
+  const panel = document.getElementById('mobile-menu')
+
+  function openMenu() {
+    panel?.classList.remove('translate-x-full')
+    panel?.setAttribute('aria-hidden', 'false')
+    overlay?.classList.remove('pointer-events-none', 'opacity-0')
+    overlay?.classList.add('opacity-100')
+    openBtn?.setAttribute('aria-expanded', 'true')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeMenu() {
+    panel?.classList.add('translate-x-full')
+    panel?.setAttribute('aria-hidden', 'true')
+    overlay?.classList.add('pointer-events-none', 'opacity-0')
+    overlay?.classList.remove('opacity-100')
+    openBtn?.setAttribute('aria-expanded', 'false')
+    document.body.style.overflow = ''
+  }
+
+  openBtn?.addEventListener('click', openMenu)
+  closeBtn?.addEventListener('click', closeMenu)
+  overlay?.addEventListener('click', closeMenu)
+
+  panel
+    ?.querySelectorAll('[data-menu-link]')
+    .forEach((link) => link.addEventListener('click', closeMenu))
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu()
+  })
+</script>

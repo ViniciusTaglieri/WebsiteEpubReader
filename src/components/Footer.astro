@@ -28,13 +28,15 @@ const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
     <div class="flex flex-col gap-4">
       <a
         href="#top"
-        class="inline-flex items-center gap-3 text-[21px] font-semibold tracking-[-0.02em]"
+        class="hidden items-center gap-3 text-[21px] font-semibold tracking-[-0.02em] md:inline-flex"
       >
         <BookMarked className="h-10 w-10 text-gold" />
         <span>Leitor EPUB</span>
       </a>
       <a
-        href={githubUrl}
+        href={githubUrl + "/releases"}
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex min-h-[54px] items-center justify-center gap-3 rounded-lg bg-gold px-6 font-semibold text-white shadow-[0_12px_25px_rgb(0_0_0_/_18%)] hover:bg-gold-strong"
       >
         <Download size={21} />
@@ -42,6 +44,8 @@ const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
       </a>
       <a
         href={githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex min-h-[54px] items-center justify-center gap-3 rounded-lg border border-white/55 px-6 font-semibold hover:border-gold-strong"
       >
         <GitHubMark size={21} />
