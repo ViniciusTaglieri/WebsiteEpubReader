@@ -3,6 +3,7 @@ import { BookMarked, Download, Menu, X } from 'lucide-react'
 import GitHubMark from './GitHubMark.astro'
 
 const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
+const downloadUrl = 'https://github.com/ViniciusTaglieri/EpubReader/releases/download/v0.1.0/Leitor.EPUB_0.1.0_x64_en-US.msi'
 ---
 
 <header
@@ -32,7 +33,7 @@ const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
         class="transition hover:text-gold-strong">GitHub</a
       >
       <a
-        href={githubUrl + '/releases'}
+        href={downloadUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex min-h-11 items-center gap-2 rounded-lg bg-gold px-5 font-semibold text-white hover:bg-gold-strong"
@@ -121,7 +122,7 @@ const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
   <!-- Download fixo no rodapé do painel -->
   <div class="mt-auto border-t border-line p-4">
     <a
-      href={githubUrl + '/releases'}
+      href={downloadUrl}
       target="_blank"
       rel="noopener noreferrer"
       class="flex min-h-[52px] items-center justify-center gap-2.5 rounded-lg bg-gold font-semibold text-white transition hover:bg-gold-strong"
