@@ -4,7 +4,7 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://viniciustaglieri.github.io",
-  base: "/EpubReader",
+  base: "/WebsiteEpubReader",
   integrations: [react(), tailwind()],
   output: "static",
 });
