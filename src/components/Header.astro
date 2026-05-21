@@ -1,8 +1,8 @@
 ---
-import { BookMarked, Download } from "lucide-react";
-import GitHubMark from "./GitHubMark.astro";
+import { BookMarked, Download } from 'lucide-react'
+import GitHubMark from './GitHubMark.astro'
 
-const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
+const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
 ---
 
 <header
@@ -23,7 +23,11 @@ const githubUrl = "https://github.com/ViniciusTaglieri/EpubReader";
       <a href="#top" class="transition hover:text-gold-strong">Inicio</a>
       <a href="#demo" class="transition hover:text-gold-strong">Demo</a>
       <a href="#colecoes" class="transition hover:text-gold-strong">Coleções</a>
-      <a href={githubUrl} class="transition hover:text-gold-strong">GitHub</a>
+      <a
+        href={githubUrl}
+        target="_blank"
+        class="transition hover:text-gold-strong">GitHub</a
+      >
       <a
         href={githubUrl}
         class="inline-flex min-h-11 items-center gap-2 rounded-lg bg-gold px-5 font-semibold text-white hover:bg-gold-strong"
