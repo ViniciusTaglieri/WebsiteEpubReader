@@ -3,7 +3,8 @@ import { BookMarked, Download, Menu, X } from 'lucide-react'
 import GitHubMark from './GitHubMark.astro'
 
 const githubUrl = 'https://github.com/ViniciusTaglieri/EpubReader'
-const downloadUrl = 'https://github.com/ViniciusTaglieri/EpubReader/releases/download/v0.1.0/Leitor.EPUB_0.1.0_x64_en-US.msi'
+const downloadUrl =
+  'https://github.com/ViniciusTaglieri/EpubReader/releases/download/v0.2.0/Leitor.EPUB_0.1.0_x64_en-US.msi'
 ---
 
 <header
@@ -60,9 +61,10 @@ const downloadUrl = 'https://github.com/ViniciusTaglieri/EpubReader/releases/dow
 <!-- Overlay escuro -->
 <div
   id="menu-overlay"
-  class="pointer-events-none fixed inset-0 z-40 bg-ink/50 opacity-0 transition-opacity duration-300 md:hidden"
+  class="bg-ink/50 pointer-events-none fixed inset-0 z-40 opacity-0 transition-opacity duration-300 md:hidden"
   aria-hidden="true"
-></div>
+>
+</div>
 
 <!-- Painel deslizante -->
 <aside
@@ -97,17 +99,20 @@ const downloadUrl = 'https://github.com/ViniciusTaglieri/EpubReader/releases/dow
       href="#top"
       data-menu-link
       class="flex min-h-[48px] items-center rounded-lg px-4 text-sm font-medium transition hover:bg-gold-soft hover:text-gold-strong"
-    >Início</a>
+      >Início</a
+    >
     <a
       href="#demo"
       data-menu-link
       class="flex min-h-[48px] items-center rounded-lg px-4 text-sm font-medium transition hover:bg-gold-soft hover:text-gold-strong"
-    >Demo</a>
+      >Demo</a
+    >
     <a
       href="#colecoes"
       data-menu-link
       class="flex min-h-[48px] items-center rounded-lg px-4 text-sm font-medium transition hover:bg-gold-soft hover:text-gold-strong"
-    >Coleções</a>
+      >Coleções</a
+    >
     <a
       href={githubUrl}
       target="_blank"
